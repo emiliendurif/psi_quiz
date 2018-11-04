@@ -6,6 +6,7 @@ import xlrd
 import datetime
 import os, glob
 import sqlite3
+import pandas as pd
 
 #RAZ du fichier log
 f=open('log.txt','w')
@@ -15,6 +16,7 @@ c=conn.cursor()
 
 liste_quizz=['C2-1']
 liste_quizz=['C1-2']
+liste_quizz=[]
 
 for q in liste_quizz:
     #Determination des donnees du quiz
@@ -48,6 +50,40 @@ conn.commit()
 conn.close()
 
 req_score="select nom, prenom, sc_total from (select nom, prenom, sum(score) as sc_total from (select nom, prenom, score from etudiants join joue on etudiants.idetudiant=joue.idetudiant) group by nom) order by sc_total DESC"
+
+
+#Post-traitement
+
+conn=sqlite3.connect('psiii_quizz.db')
+c=conn.cursor()
+c.execute(req_score)
+data=c.fetchall()
+tableau=[]
+for ligne in data:
+    tableau.append(list(ligne))
+texte='<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: center;"></thead>\n'
+texte+='<th>Nom</th>\n<th>Prénom</th>\n<th>Score</th>\n</tr>\n'
+i=0
+while i<=20:
+    l=tableau[i]
+    texte+='<th>'+l[0]+'</th>\n<th>'+l[1]+'</th>\n<th>'+str(l[2])+'</th>\n</tr>\n'
+    i+=1
+
+texte+='</tbody>\n</table>'  
+with open('tableau1.html','w',encoding='iso-8859-1') as f:
+    f.write(texte)
+    
+texte='<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: center;"></thead>\n'
+texte+='<th>Nom</th>\n<th>Prénom</th>\n<th>Score</th>\n</tr>\n'
+i=21
+while i<=40:
+    l=tableau[i]
+    texte+='<th>'+l[0]+'</th>\n<th>'+l[1]+'</th>\n<th>'+str(l[2])+'</th>\n</tr>\n'
+    i+=1
+
+texte+='</tbody>\n</table>'  
+with open('tableau2.html','w',encoding='iso-8859-1') as f:
+    f.write(texte)
 
 
       
