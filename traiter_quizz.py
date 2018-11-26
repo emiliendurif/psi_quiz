@@ -19,6 +19,7 @@ liste_quizz=['C1-2']
 liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
 liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
 liste_quizz=['C3-2']#Liste des quiz à traiter pour la modification de la bdd
+liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
 
 #Mise à 0 des scores
 req_etudiants="select nom, prenom from etudiants"
