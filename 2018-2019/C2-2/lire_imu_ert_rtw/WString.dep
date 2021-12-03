@@ -1,0 +1,14 @@
+WString.o: \
+ /Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/WString.cpp \
+ /Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/WString.h \
+ /Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/avr/pgmspace.h \
+ /Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/itoa.h \
+ /Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/avr/dtostrf.h
+
+/Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/WString.h:
+
+/Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/avr/pgmspace.h:
+
+/Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/itoa.h:
+
+/Users/emiliendurif/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/samd/1.6.20/cores/arduino/avr/dtostrf.h:

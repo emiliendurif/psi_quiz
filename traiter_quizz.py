@@ -7,6 +7,7 @@ import datetime
 import os, glob
 import sqlite3
 import pandas as pd
+import pdb
 
 #RAZ du fichier log
 f=open('log.txt','w')
@@ -18,19 +19,27 @@ liste_quizz=['C2-1']
 liste_quizz=['C1-2']
 liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
 liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C3-2']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
+liste_quizz=['C3-3']#Liste des quiz à traiter pour la modification de la bdd
+# liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
+# liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
 
 #Mise à 0 des scores
-req_etudiants="select nom, prenom from etudiants"
-c.execute(req_etudiants)
-for l in c.fetchall():
-    (nom,prenom)=l
-    req_raz1="update etudiants set score_cumule="+str(0)+" where nom='"+nom+"' and prenom='"+prenom+"'"
-    c.execute(req_raz1)
-    req_raz2="update etudiants set classement="+str(41)+" where nom='"+nom+"' and prenom='"+prenom+"'"
-    c.execute(req_raz1)
+def raz_bdd():
+    conn=sqlite3.connect('psiii_quizz.db')
+    c=conn.cursor()
+    req_etudiants="select nom, prenom from etudiants"
+    c.execute(req_etudiants)
+    for l in c.fetchall():
+        (nom,prenom)=l
+        req_raz1="update etudiants set score_cumule="+str(0)+" where nom='"+nom+"' and prenom='"+prenom+"'"
+        c.execute(req_raz1)
+        req_raz2="update etudiants set classement="+str(45)+" where nom='"+nom+"' and prenom='"+prenom+"'"
+        c.execute(req_raz2)
+        req_raz3="update etudiants set evol_classement="+str(0)+" where nom='"+nom+"' and prenom='"+prenom+"'"
+        c.execute(req_raz3)
+    conn.commit()
+    conn.close()
+
 
 for q in liste_quizz:
     #Determination des donnees du quiz
@@ -48,7 +57,7 @@ for q in liste_quizz:
     i=0
     while 'Student' not in fs.cell_value(i,0):
         i+=1
-    i+=1
+    i+=2
     #i indice de la premiere ligne de donnee
     #Balayage des lignes de donnees
     while 'Class' not in fs.cell_value(i,0):
@@ -58,6 +67,7 @@ for q in liste_quizz:
         idetudiant=c.fetchone()
         print(idetudiant)
         c.execute("INSERT INTO joue (idetudiant,idquiz,score) VALUES ("+str(idetudiant[0])+","+str(id_quiz)+","+str(score)+")")
+        #pdb.set_trace()
         i+=1
         #c.fetchone()
     #Requete pour afficher le score cumule
