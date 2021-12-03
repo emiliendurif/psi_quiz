@@ -19,7 +19,7 @@ liste_quizz=['C2-1']
 liste_quizz=['C1-2']
 liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
 liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C3-3']#Liste des quiz à traiter pour la modification de la bdd
+liste_quizz=['C4-0']#Liste des quiz à traiter pour la modification de la bdd
 # liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
 # liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
 
@@ -45,7 +45,7 @@ for q in liste_quizz:
     #Determination des donnees du quiz
     c.execute("SELECT idquiz, nbr_question FROM quiz WHERE nom_quiz='"+q+"'")
     (id_quiz,nbr_question)=c.fetchone()
-    path=r"/Users/emiliendurif/Documents/prepa/PSI/psi_quiz/"+q+".xlsx"
+    path=r"/Users/emiliendurif/Documents/prepa/PSI/psi_quiz/psi_quiz/"+q+".xlsx"
     classeur=xlrd.open_workbook(path)
     feuilles=classeur.sheet_names()
     #Ouverture de la feuille du quiz
