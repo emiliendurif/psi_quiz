@@ -20,6 +20,7 @@ liste_quizz=['C1-2']
 liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
 liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
 liste_quizz=['C4-0-1']#Liste des quiz à traiter pour la modification de la bdd
+liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
 # liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
 # liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
 
