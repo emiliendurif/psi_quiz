@@ -23,7 +23,7 @@ liste_quizz=['C4-0-1']#Liste des quiz à traiter pour la modification de la bdd
 liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
 liste_quizz=['C5-2']#Liste des quiz à traiter pour la modification de la bdd
 liste_quizz=['C4-0-BIS']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C6-2']#Liste des quiz à traiter pour la modification de la bdd
+liste_quizz=['C7-2']#Liste des quiz à traiter pour la modification de la bdd
 # liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
 # liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
 
