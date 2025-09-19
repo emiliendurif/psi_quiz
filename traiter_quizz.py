@@ -15,17 +15,11 @@ f=open('log.txt','w')
 conn=sqlite3.connect('psiii_quizz.db')
 c=conn.cursor()
 
-liste_quizz=['C2-1']
 liste_quizz=['C1-2']
-liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
-liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C4-0-1']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C5-2']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C4-0-BIS']#Liste des quiz à traiter pour la modification de la bdd
-liste_quizz=['C7-2']#Liste des quiz à traiter pour la modification de la bdd
-# liste_quizz=['C3-2_debriefing']#Liste des quiz à traiter pour la modification de la bdd
-# liste_quizz=['C4-2']#Liste des quiz à traiter pour la modification de la bdd
+liste_quizz=['C2-1']
+# liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
+# liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
+#
 
 #Mise à 0 des scores
 def raz_bdd():
@@ -45,18 +39,20 @@ def raz_bdd():
     conn.close()
 
 
+#raz_bdd()
+
 for q in liste_quizz:
     #Determination des donnees du quiz
     c.execute("SELECT idquiz, nbr_question FROM quiz WHERE nom_quiz='"+q+"'")
     (id_quiz,nbr_question)=c.fetchone()
-    path=r"/Users/emiliendurif/Documents/prepa/PSI/psi_quiz/psi_quiz/"+q+".xlsx"
+    path=r"/Users/emiliendurif/Documents/prepa/PSI/psi_quiz/psi_quiz_2025/"+q+".xls"
     classeur=xlrd.open_workbook(path)
     feuilles=classeur.sheet_names()
     #Ouverture de la feuille du quiz
     for f in feuilles:
         if "Sheet1" in f:
             fs=classeur.sheet_by_name(f)
-        
+
     #Detection de la premier ligne
     i=0
     while 'Student' not in fs.cell_value(i,0):
@@ -95,7 +91,7 @@ for q in liste_quizz:
         if int(l[2])==sc_quiz[-1]:
             cl_quiz.append(cl_quiz[-1])
             rank+=1
-        else: 
+        else:
             rank+=1
             cl_quiz.append(rank)
         sc_quiz.append(int(l[2]))
@@ -110,7 +106,7 @@ for q in liste_quizz:
         c.execute(req_update)
         req_update="update etudiants set evol_classement="+str(-int(l[3])+int(classement_0))+" where nom='"+l[0]+"' and prenom='"+l[1]+"'"
         c.execute(req_update)
-        
+
 conn.commit()
 conn.close()
 
@@ -120,9 +116,9 @@ conn.close()
 # ###########@
 conn=sqlite3.connect('psiii_quizz.db')
 c=conn.cursor()
-# 
+#
 # #Generation du tableau html
-# 
+#
 c.execute("select prenom, score_cumule, classement, evol_classement from etudiants")
 data=c.fetchall()
 data.sort(key=lambda colonnes: colonnes[2])
@@ -140,23 +136,6 @@ while i<=20:
         texte+='<th>'+l[0]+'</th>\n<th>'+str(l[1])+'</th>\n<th>'+str(l[2])+'</th>\n<th>'+str(l[3])+'</th>\n</tr>\n'
     i+=1
 
-texte+='</tbody>\n</table>'  
+texte+='</tbody>\n</table>'
 with open('tableau1.html','w',encoding='iso-8859-1') as f:
     f.write(texte)
-#     
-# texte='<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: center;"></thead>\n'
-# texte+='<th>Nom</th>\n<th>Prénom</th>\n<th>Score</th>\n</tr>\n'
-# i=21
-# while i<=40:
-#     l=tableau[i]
-#     texte+='<th>'+l[0]+'</th>\n<th>'+l[1]+'</th>\n<th>'+str(l[2])+'</th>\n</tr>\n'
-#     i+=1
-# 
-# texte+='</tbody>\n</table>'  
-# with open('tableau2.html','w',encoding='iso-8859-1') as f:
-#     f.write(texte)
-# 
-# 
-#       
-#                     
-
