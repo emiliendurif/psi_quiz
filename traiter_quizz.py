@@ -18,6 +18,7 @@ c=conn.cursor()
 liste_quizz=['C1-2']
 liste_quizz=['C2-1']
 liste_quizz=['C2-2']
+liste_quizz=['C3-1']
 # liste_quizz0=['C1-2','C2-1','C3-1']#Liste des quiz réalisés dans l'ordre
 # liste_quizz=['C1-2','C2-1','C3-1']#Liste des quiz à traiter pour la modification de la bdd
 #
